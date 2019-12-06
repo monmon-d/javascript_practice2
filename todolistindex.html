@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+​
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>ToDoリスト</title>
+  <link rel="stylesheet" href="css/styles.css">
+  ​
+</head>
+​
+
+<body>
+  <h1>ToDoリスト</h1>
+  ​
+  <div class="radiobutton">
+    <input type="radio" id="button-1" name="radio1" value="1" checked />
+    <label for="button-1">すべて</label>
+    <input type="radio" id="button-2" name="radio1" value="2" />
+    <label for="button-2">完了中</label>
+    <input type="radio" id="button-3" name="radio1" value="3" />
+    <label for="button-3">作業中</label>
+    ​
+    ​
+    <table>
+      <thead id>
+        <tr>
+          <th>ID</th>
+          <th>コメント</th>
+          <th>状態</th>
+        </tr>
+      </thead>
+      <tbody id="id_tbody">
+      </tbody>
+    </table>
+    ​
+    ​
+    <h2>新規タスクの増加</h2>
+    ​
+    <p id=id_p>
+      <input type="text" id="id_text" value="">
+      <button id="btn" type="btn" class="button"> 追加</button>
+    </p>
+  </div>
+  ​
+  <script>
+    let id = 0;
+    //イベントリスナ―を登録
+    const btn = document.getElementById('btn');
+    btn.addEventListener('click', () => {
+
+      const idEl = document.createElement("td");
+      idEl.textContent = id;
+      const comment = document.getElementById("id_text").value;
+      const commentEl = document.createElement("td");
+      commentEl.textContent = (comment);
+
+      const btn1El = document.createElement("button");
+      btn1El.textContent = "作業中";
+      const btn2El = document.createElement("button");
+      btn2El.textContent = "削除";
+
+      const trEl = document.createElement("tr");
+      trEl.appendChild(idEl);
+      trEl.appendChild(commentEl);
+      trEl.appendChild(btn1El);
+      trEl.appendChild(btn2El);
+
+      const todoEl = document.getElementById("id_tbody");
+      todoEl.appendChild(trEl);
+      id++;
+
+      btn2El.addEventListener('click', () => {
+        console.log('リストを削除');
+        id_tbody.removeChild(trEl);
+      });
+
+    }, false);
+
+
+
+  </script>
+</body>
+​
+
+</html>
