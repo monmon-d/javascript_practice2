@@ -12,13 +12,28 @@ add_btn.addEventListener('click', () => {
   const working_btn = document.createElement("button");
   working_btn.textContent = "作業中";
 
-  const delBtn = document.createElement("button");
+  
+  /*const delBtn = document.createElement("button");
   delBtn.textContent = "削除";
   console.log('リストを削除');
   delBtn.addEventListener('click', () => {
     id_tbody.removeChild(trEl);
     return delBtn;
-  });
+  });*/
+
+  
+  const createDelBtn = function() {
+    //削除ボタンを生成する処理
+    const delBtn = document.createElement("button");
+    delBtn.textContent = "削除";
+    delBtn.addEventListener('click' , ()=>{
+      id_tbody.removeChild(trEl);
+    })
+    //生成した削除ボタンを返す処理
+    return delBtn;
+  }
+    const delBtn = createDelBtn();
+
 
   const trEl = document.createElement("tr");
   trEl.appendChild(id_td);
