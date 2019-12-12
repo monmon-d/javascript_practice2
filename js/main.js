@@ -9,50 +9,47 @@ add_btn.addEventListener('click', () => {
   const commentEl = document.createElement("td");
   commentEl.textContent = (comment);
 
-  const working_btn = document.createElement("button");
-  working_btn.textContent = "作業中";
 
-  
-  /*const delBtn = document.createElement("button");
-  delBtn.textContent = "削除";
-  console.log('リストを削除');
-  delBtn.addEventListener('click', () => {
-    id_tbody.removeChild(trEl);
-    return delBtn;
-  });*/
+  const createWorkingBtn = function () {
+    //作業中ボタンを生成する処理
+    const workingBtn = document.createElement("button");
+    workingBtn.textContent = "作業中";
+    workingBtn.addEventListener('click', () => {
+      console.log('表示を変更');
+      if (workingBtn.textContent === "作業中") {
+        workingBtn.textContent = "完了";
+      } else {
+        workingBtn.textContent = "作業中";
+      }
+    })
+    //生成した作業中ボタンを返す処理
+    return workingBtn;
+  }
+  const workingBtn = createWorkingBtn();
 
-  
-  const createDelBtn = function() {
+
+  const createDelBtn = function () {
     //削除ボタンを生成する処理
     const delBtn = document.createElement("button");
     delBtn.textContent = "削除";
-    delBtn.addEventListener('click' , ()=>{
-      id_tbody.removeChild(trEl);
+    delBtn.addEventListener('click', () => {
+      idTbody.removeChild(trEl);
     })
     //生成した削除ボタンを返す処理
     return delBtn;
   }
-    const delBtn = createDelBtn();
-
+  const delBtn = createDelBtn()
+  
 
   const trEl = document.createElement("tr");
   trEl.appendChild(id_td);
   trEl.appendChild(commentEl);
-  trEl.appendChild(working_btn);
+  trEl.appendChild(workingBtn);
   trEl.appendChild(delBtn);
-  const todoEl = document.getElementById("id_tbody");
+  const todoEl = document.getElementById("idTbody");
 
   todoEl.appendChild(trEl);
   taskid++;
 
 
-  working_btn.addEventListener('click', () => {
-    console.log('表示を変更');
-    if (working_btn.textContent === "作業中") {
-      working_btn.textContent = "完了";
-    } else {
-      working_btn.textContent = "作業中";
-    }
-  });
-
-}, false);
+}, false); 
